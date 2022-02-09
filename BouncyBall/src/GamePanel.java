@@ -164,27 +164,32 @@ public class GamePanel extends JPanel implements ActionListener {
         {
             for(Ball ball : balls)
             {
+                boolean collidedWithWall=false;
                 for(Wall wall : borders)
                 {
-                    ball.checkCollisionWithWall(wall);
+                    if(ball.checkCollisionWithWall(wall))
+                        collidedWithWall=true;
                 }
 
-                Block blockToRemove = null;
-                for(Block block : blocks)
+                if(!collidedWithWall)
                 {
-                    if(ball.checkCollisionWithWall(block.getWall()))
+                    Block blockToRemove = null;
+                    for(Block block : blocks)
                     {
-                        block.getHit();
-                        if(block.getHitsLeft()==0)
+                        if(ball.checkCollisionWithWall(block.getWall()))
                         {
-                            blockToRemove=block;
-                            Main.points++;
+                            block.getHit();
+                            if(block.getHitsLeft()==0)
+                            {
+                                blockToRemove=block;
+                                Main.points++;
+                                break;
+                            }
                             break;
                         }
-                        break;
                     }
+                    blocks.remove(blockToRemove);
                 }
-                blocks.remove(blockToRemove);
             }
         }
 

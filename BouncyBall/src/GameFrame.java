@@ -2,17 +2,22 @@ import javax.swing.*;
 
 public class GameFrame extends JFrame {
 
-    private GamePanel panel;
+    private GamePanel gamePanel;
+    private InfoPanel infoPanel;
 
     public GameFrame()
     {
-        panel = new GamePanel();
+        gamePanel = new GamePanel();
+        infoPanel = new InfoPanel();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(panel);
+        this.add(gamePanel);
+        this.add(infoPanel);
         this.setTitle("BouncyBall");
-        this.pack();
+        this.setSize(671, 739);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
+
         this.setVisible(true);
     }
 }
