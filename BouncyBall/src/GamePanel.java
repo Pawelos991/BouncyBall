@@ -18,7 +18,6 @@ public class GamePanel extends JPanel implements ActionListener {
     private List<Ball> balls;
     private List<Block> blocks;
     private List<Wall> borders;
-    //private int numberOfShoots;
     private boolean newShoot;
     private boolean shootClicked;
     private Ball aim;
